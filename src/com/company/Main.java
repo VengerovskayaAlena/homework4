@@ -72,11 +72,20 @@ public class Main {
         int placeAll = 102;
         int placeSit = 60;
         int placeStand = placeAll - placeSit;
-        int peopleInside = 105;
+        int peopleInside = 80;
         int placeFree = placeAll - peopleInside;
+        int placeFreeSit;
+        int placeFreeStand;
+        if (peopleInside < placeSit) {
+            placeFreeSit = placeSit - peopleInside;
+            placeFreeStand = placeStand;
+        } else {
+            placeFreeSit = 0;
+            placeFreeStand = placeFree;
+        }
         boolean people = peopleInside < placeAll;
         if (people) {
-            System.out.println("Места есть: " + placeFree + " места");
+            System.out.println("Места есть: " + placeFree + " места. " + "Сидячих: "  + placeFreeSit + " и стоячих: " + placeFreeStand);
         } else {
             System.out.println("Мест нет, вагон полностью забит");
         }
